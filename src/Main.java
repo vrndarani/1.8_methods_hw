@@ -12,8 +12,12 @@ public class Main {
 
         int deliveryDistance = 100;
         int numberOfDays = calculateNumberOfDays(deliveryDistance);
-        System.out.println("Delivery will take " + numberOfDays + " days.");
+        printDeliveryDays(numberOfDays);
 
+    }
+
+    public static void printDeliveryDays (int days) {
+        System.out.println("Delivery will take " + days);
     }
 
     public static void printIsLeapYear(int year) {
@@ -24,19 +28,19 @@ public class Main {
         }
     }
 
-    public static void printApplicationVersion (int a, int b) {
+    public static void printApplicationVersion (int system, int year) {
         int currentYear = LocalDate.now().getYear();
-        if (a == 1) {
-            if (b < currentYear) {
-                System.out.println("Install Android lite version of the app here");
+        if (system == 1) {
+            if (year > 2015 && year <= currentYear) {
+                System.out.println("Install Android  version of the app here");
             } else {
-                System.out.println("Install Android version of the app here");
+                System.out.println("Install Android lite version of the app here");
             }
         } else {
-            if (b < currentYear) {
-                System.out.println("Install iOS lite version of the app here");
+            if (year > 2015 && year <= currentYear) {
+                System.out.println("Install iOS version of the app here");
             } else {
-                System.out.println("Install iOS of the app version here");
+                System.out.println("Install iOS lite version of the app here");
             }
         }
     }
@@ -44,12 +48,18 @@ public class Main {
 
     public static int calculateNumberOfDays (int distance) {
         int days = 0;
-        if (distance >= 0 && distance < 40)
-            days +=1;
-        if (distance >= 40 && distance < 60)
-            days +=1;
-        if (distance >= 60 && distance < 80)
-            days +=1;
+        if (distance >= 0 && distance < 20) {
+            days += 1;
+        }
+        if (distance >= 20 && distance < 60) {
+            days += 2;
+        }
+        if (distance >= 60 && distance < 100) {
+            days += 3;
+        }
+        if (distance >= 100) {
+            days += 4;
+        }
 
         return days;
 
